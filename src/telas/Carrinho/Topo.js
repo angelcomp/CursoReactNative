@@ -1,12 +1,13 @@
-import {StyleSheet, Image, Text, Dimensions} from "react-native"
+import {StyleSheet, Image, Dimensions} from "react-native"
 import topo from '../../../assets/topo.png'
+import Texto from "../../components/Texto"
 
 const width = Dimensions.get('screen').width;
 
 export function Topo() {
     return <>
       <Image style={styles.topo} source={topo}></Image>
-      <Text style={styles.tituloCarrinho}>Carrinho</Text>
+      <Texto style={styles.tituloCarrinho}>Carrinho</Texto>
     </>
 }
 
@@ -22,6 +23,6 @@ const styles = StyleSheet.create({
       width: "100%",
       fontSize: 20,
       fontWeight: "bold",
-      lineHeight: 40
+      lineHeight: 40,
   },
 })
