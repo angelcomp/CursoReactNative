@@ -2,18 +2,16 @@
 import { StyleSheet, View, Image } from "react-native"
 import Texto from "../../components/Texto"
 
-import logoVendedor from '../../../assets/logo.png'
-
-export function Detalhes() {
+export function Detalhes({detalhes, titulo, logoVendedor, nomeVendedor, descricao, preco}) {
     return <>
-        <Texto style={styles.detalhes}>Detalhes do Carrinho</Texto>
-        <Texto style={styles.titulo}>Kit IoT</Texto>
+        <Texto style={styles.detalhes}> {detalhes} </Texto>
+        <Texto style={styles.titulo}> {titulo} </Texto>
         <View style={styles.vendedor}>
             <Image style={styles.logoVendedor} source={logoVendedor} />
-            <Texto style={styles.nomeVendedor}>Nuvem's Shopping</Texto>
+            <Texto style={styles.nomeVendedor}> {nomeVendedor} </Texto>
         </View>
-        <Texto style={styles.desc}>Um kit que revoluciona você.</Texto>
-        <Texto style={styles.preco}>R$ 99,00</Texto>
+        <Texto style={styles.desc}> {descricao} </Texto>
+        <Texto style={styles.preco}> {preco} </Texto>
     </>
 }
 
