@@ -1,9 +1,10 @@
-import { StatusBar, StyleSheet, SafeAreaView, View, ScrollView } from 'react-native';
+import { StatusBar, StyleSheet, SafeAreaView, View, ScrollView, FlatList } from 'react-native';
 import { Detalhes } from './src/telas/Carrinho/Detalhes';
 import { Topo } from './src/telas/Carrinho/Topo';
 import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from "@expo-google-fonts/montserrat"
 import Mocks from './src/mocks/carrinho';
-import Itens from './src/telas/Carrinho/Itens';
+import Item from './src/telas/Carrinho/Item';
+import Texto from "./src/components/Texto";
 
 export default function App() {
 
@@ -18,11 +19,23 @@ if (!fontsLoaded) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <Topo {...Mocks.topo}/>
-        <Detalhes {...Mocks.detalhes}/>
-        <Itens {...Mocks.itens}/>
-      </ScrollView>
+      
+      <FlatList
+        data={Mocks.itens.lista}
+        renderItem={Item}
+        keyExtractor={ ({nome}) => nome }
+        ListHeaderComponent={
+          () => {
+            return <>
+              <Topo {...Mocks.topo}/>
+              <Detalhes {...Mocks.detalhes}/>
+              <Texto style={styles.titulo}>
+                  { Mocks.itens.titulo }
+              </Texto>
+            </>
+          }
+        }
+      />
       <StatusBar/>
     </SafeAreaView>
   );
@@ -33,4 +46,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  titulo:{
+    color: '#ffa500',
+    marginVertical: 30,
+    fontWeight: 'bold',
+    fontSize: 25
+},
 });
